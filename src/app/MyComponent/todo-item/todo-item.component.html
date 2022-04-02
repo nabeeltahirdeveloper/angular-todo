@@ -1,0 +1,11 @@
+<div>
+    <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+  </div>
+  <br />
+  <hr />
+<div *ngIf="this.todos.length==0; else elseBlock">No Todo you saved.</div>
+<ng-template #elseBlock>
+<div *ngFor="let todo of todos; index as i;">
+    <app-todo-data [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoComplete)="completeTodo($event)"></app-todo-data>
+  </div>
+</ng-template>
